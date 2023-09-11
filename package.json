@@ -1,0 +1,46 @@
+{
+  "name": "csv-to-apkg",
+  "version": "0.0.0",
+  "description": "convert CSV files to Anki flashcards (APKG)",
+  "main": "dist/csv-to-apkg.js",
+  "scripts": {
+    "build": "npm run prebuild; tsc && vite build",
+    "test": "vitest",
+    "test:watch": "vitest watch",
+    "coverage": "vitest --coverage",
+    "prebuild": "rm -rf dist",
+    "lint": "eslint . --ext .ts",
+    "lint:fix": "eslint . --ext .ts --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/2anki/csv-to-apkg.git"
+  },
+  "keywords": [
+    "notion",
+    "title",
+    "page",
+    "title"
+  ],
+  "author": "Alexander Alemayhu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/2anki/csv-to-apkg/issues"
+  },
+  "homepage": "https://github.com/2anki/csv-to-apkg#readme",
+  "devDependencies": {
+    "@rollup/plugin-typescript": "^11.1.2",
+    "@typescript-eslint/eslint-plugin": "^6.2.1",
+    "@typescript-eslint/parser": "^6.2.1",
+    "eslint": "^8.46.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.28.0",
+    "rollup-plugin-typescript-paths": "^1.4.0",
+    "semantic-release": "^21.1.1",
+    "tslib": "^2.6.0",
+    "vitest": "^0.34.3"
+  },
+  "directories": {
+    "lib": "dist"
+  }
+}
