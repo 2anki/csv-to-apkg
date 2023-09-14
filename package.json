@@ -1,5 +1,5 @@
 {
-  "name": "csv-to-apkg",
+  "name": "@2anki/csv-to-apkg",
   "version": "0.0.0",
   "description": "convert CSV files to Anki flashcards (APKG)",
   "main": "dist/csv-to-apkg.js",
