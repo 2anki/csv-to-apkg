@@ -1,6 +1,5 @@
-export default function convertCSVToAPKG(): string | null {
-  throw new Error('To be implemented');
-}
+import get16DigitRandomId from './get16DigitRandomId';
+import Deck from './deck';
 
 export type CSVColumnHeader = string
 export type CSVRow = string[]
@@ -63,35 +62,6 @@ class Note {
   notionLink?: string;
 }
 
-/**
- * https://github.com/2anki/server/blob/main/src/lib/parser/Deck.ts
- */
-class Deck {
-  name: string;
-
-  cards: Note[];
-
-  image: string | undefined;
-
-  style: string | null;
-
-  id: number;
-
-  constructor(
-    name: string,
-    cards: Note[],
-    image: string | undefined,
-    style: string | null,
-    id: number,
-  ) {
-    this.name = name;
-    this.cards = cards;
-    this.image = image;
-    this.style = style;
-    this.id = id;
-  }
-}
-
 interface CreateDeckOptions extends Deck {
   data: CSVData;
 }
@@ -126,4 +96,14 @@ export function createDeck({
 }: CreateDeckOptions): Deck {
   const newCards = locateCards(data);
   return new Deck(name, [...cards, ...newCards], image, style, id);
+}
+
+export function defaultDeckOptions() {
+  return {
+    name: 'Default',
+    cards: [],
+    image: undefined,
+    style: null,
+    id: get16DigitRandomId(),
+  };
 }

@@ -1,8 +1,8 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { describe, expect, it } from 'vitest';
 
-import convertCSVToAPKG, { createDeck, readCSVContent } from './csv-to-apkg';
-import get16DigitRandomId from './get16DigitRandomId';
+import { createDeck, defaultDeckOptions, readCSVContent } from './csv-to-apkg';
+import convertCSVToAPKG from './convertCSVToAPKG';
 
 const CSV_EXAMPLE = `
 Word,Meaning,Tags
@@ -12,9 +12,10 @@ Word,Meaning,Tags
 `;
 
 describe('Convert CSV to APKG', () => {
-  it.skip('converts CSV to APKG format', () => {
-    expect(convertCSVToAPKG())
-      .toContain('magic');
+  it('converts CSV to APKG format', async () => {
+    const apkg = await convertCSVToAPKG(CSV_EXAMPLE);
+    expect(apkg.length)
+      .toEqual(53466);
   });
 
   it('reads the CSV content correctly', () => {
@@ -38,12 +39,8 @@ describe('Convert CSV to APKG', () => {
   it('Transform to decks / notes', () => {
     const data = readCSVContent(CSV_EXAMPLE);
     const deck = createDeck({
-      name: 'Default',
-      cards: [],
-      image: undefined,
-      style: null,
-      id: get16DigitRandomId(),
-      data,
+      ...defaultDeckOptions(),
+      data
     });
 
     expect(deck.name)
