@@ -14,17 +14,11 @@ export default class Deck {
 
   id: number;
 
-  constructor(
-    name: string,
-    cards: Note[],
-    image: string | undefined,
-    style: string | null,
-    id: number
-  ) {
+  constructor(name: string, cards: Note[], id: number) {
     this.name = name;
     this.cards = cards;
-    this.image = image;
-    this.style = style;
+    this.image = undefined;
+    this.style = null;
     this.id = id;
   }
 }

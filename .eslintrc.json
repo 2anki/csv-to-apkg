@@ -12,6 +12,7 @@
   },
   "plugins": ["@typescript-eslint"],
   "rules": {
+    "max-params": ["error", 3],
     "operator-linebreak": "off",
     "comma-dangle": "off",
     "import/extensions": [
