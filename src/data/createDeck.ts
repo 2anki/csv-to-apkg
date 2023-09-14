@@ -9,7 +9,7 @@ interface CreateDeckOptions extends Deck {
   data: CSVData;
 }
 
-const mapRowToCard = (row: string): Note => {
+const mapRowToCard = (row: string[]): Note => {
   const fields = getFields(row.toString());
   const name = getFirstLine(fields);
   const back = skipFirstLine(fields).join(' ');

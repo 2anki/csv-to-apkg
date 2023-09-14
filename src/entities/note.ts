@@ -2,11 +2,11 @@
  * https://github.com/2anki/server/blob/main/src/lib/parser/Note.ts
  */
 export default class Note {
-  name: string;
+  name!: string;
 
-  back: string;
+  back!: string;
 
-  tags: string[];
+  tags!: string[];
 
   cloze = false;
 
