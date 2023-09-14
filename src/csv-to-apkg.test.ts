@@ -5,6 +5,8 @@ import convertCSVToAPKG from './convertCSVToAPKG';
 import readCSVContent from './csv-to-apkg';
 import createDeck from './data/createDeck';
 import defaultDeckOptions from './data/defaultDeckOptions';
+import readCSVFile from './filesystem/readCSVFile';
+import resolvePath from './filesystem/resolvePath';
 
 const CSV_EXAMPLE = `
 Word,Meaning,Tags
@@ -42,11 +44,18 @@ describe('Convert CSV to APKG', () => {
     expect(deck.cards[0].back).toEqual('Please one');
   });
 
-  it.skip('uses filename as deck name', () => {
-    console.info('to be implemented');
-  });
-
-  it.skip('uses custom filename as deck name', () => {
-    console.info('to be implemented');
+  it('uses custom filename as deck name', () => {
+    const { name, contents } = readCSVFile(
+      resolvePath(
+        __dirname,
+        './mocks/Japanese Words 71594f63607d440fa080879385ec0acc.csv'
+      )
+    );
+    const deck = createDeck({
+      ...defaultDeckOptions(),
+      data: readCSVContent(contents),
+      name,
+    });
+    expect(deck.name).toEqual('Japanese Words');
   });
 });
