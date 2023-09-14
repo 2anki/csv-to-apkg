@@ -18,3 +18,13 @@ export default function convertCSVToAPKG(csvContent: string): Promise<Buffer> {
   exporter.configure([deck]);
   return exporter.save();
 }
+
+export function getCardsFromCSV(csvContent: string) {
+  const data = readCSVContent(csvContent);
+  const deck = createDeck({
+    ...defaultDeckOptions(),
+    data,
+  });
+
+  return deck.cards;
+}
