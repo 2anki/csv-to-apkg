@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { describe, it, expect, fail } from 'vitest';
 
-import convertCSVToAPKG, { CSVReader } from './csv-to-apkg';
+import convertCSVToAPKG, { CSVReader, DataMapper } from './csv-to-apkg';
 
 const CSV_EXAMPLE = `
 Word,Meaning,Tags
