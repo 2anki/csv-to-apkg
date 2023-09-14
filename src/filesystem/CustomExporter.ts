@@ -18,7 +18,6 @@ export default class CustomExporter {
   }
 
   addMedia(newName: string, contents: string) {
-    console.debug(`Adding media: ${newName}`);
     const abs = path.join(this.workspace, newName);
     this.media.push(abs);
     fs.writeFileSync(abs, contents);
@@ -28,7 +27,7 @@ export default class CustomExporter {
   configure(payload: Deck[]) {
     fs.writeFileSync(
       this.getPayloadInfoPath(),
-      JSON.stringify(payload, null, 2),
+      JSON.stringify(payload, null, 2)
     );
   }
 

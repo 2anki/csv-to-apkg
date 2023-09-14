@@ -1,6 +1,7 @@
 import path from 'path';
 import fs from 'fs';
-import getRandomUUID from './GetRandomUUID';
+
+import getRandomUUID from './getRandomUUID';
 
 class Workspace {
   location: string;

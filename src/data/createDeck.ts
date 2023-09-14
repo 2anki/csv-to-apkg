@@ -9,33 +9,29 @@ interface CreateDeckOptions extends Deck {
   data: CSVData;
 }
 
-function locateCards(data: CSVData): Note[] {
-  return data.rows.map((row) => {
-    const fields = getFields(row.toString());
-    const name = getFirstLine(fields);
-    const back = skipFirstLine(fields).join(' ');
+const mapRowToCard = (row: string): Note => {
+  const fields = getFields(row.toString());
+  const name = getFirstLine(fields);
+  const back = skipFirstLine(fields).join(' ');
 
-    return {
-      name,
-      back,
-      tags: [],
-      cloze: false,
-      number: 0,
-      enableInput: false,
-      answer: '',
-      media: [],
-    };
-  });
+  return {
+    name,
+    back,
+    tags: [],
+    cloze: false,
+    number: 0,
+    enableInput: false,
+    answer: '',
+    media: [],
+  };
+};
+
+function locateCards(data: CSVData): Note[] {
+  return data.rows.map((row) => mapRowToCard(row));
 }
 
-export default function createDeck({
-  name,
-  cards,
-  image,
-  style,
-  id,
-  data,
-}: CreateDeckOptions): Deck {
-  const newCards = locateCards(data);
-  return new Deck(name, [...cards, ...newCards], image, style, id);
+export default function createDeck(options: CreateDeckOptions): Deck {
+  const { name, cards, image, style, id, data } = options;
+
+  return new Deck(name, [...cards, ...locateCards(data)], image, style, id);
 }

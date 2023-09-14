@@ -12,7 +12,9 @@
   },
   "plugins": ["@typescript-eslint"],
   "rules": {
-    "max-params": ["error", 3],
+    "object-curly-newline": "off",
+    "max-lines-per-function": ["error", 20],
+    "max-params": ["error", 5],
     "operator-linebreak": "off",
     "comma-dangle": "off",
     "import/extensions": [
