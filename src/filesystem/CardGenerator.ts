@@ -2,18 +2,14 @@ import { execFile } from 'child_process';
 import { homedir } from 'os';
 import path from 'path';
 
-export function resolvePath(dir: string, x: string) {
-  const p = path
-    .resolve(path.join(dir, x))
-    .replace(/app.asar/g, 'app.asar.unpacked');
-  return x.endsWith('/') ? `${p}/` : p;
-}
+import resolvePath from './resolvePath';
 
-export const CREATE_DECK_DIR = process.env.CREATE_DECK_DIR || path.join(__dirname, '../../create_deck/');
+export const CREATE_DECK_DIR =
+  process.env.CREATE_DECK_DIR || path.join(__dirname, '../../../create_deck/');
 
 export const CREATE_DECK_SCRIPT_PATH = path.join(
   CREATE_DECK_DIR,
-  'create_deck.py',
+  'create_deck.py'
 );
 
 function PYTHON() {
@@ -33,7 +29,10 @@ class CardGenerator {
 
   run() {
     const deckInfo = path.join(this.currentDirectory, 'deck_info.json');
-    const templateDirectory = resolvePath(__dirname, '../../server/src/templates/');
+    const templateDirectory = resolvePath(
+      __dirname,
+      '../../../server/src/templates/'
+    );
 
     const createDeckScriptPathARGS = [
       CREATE_DECK_SCRIPT_PATH,
@@ -53,7 +52,7 @@ class CardGenerator {
           } else {
             resolve(stdout);
           }
-        },
+        }
       );
     });
   }

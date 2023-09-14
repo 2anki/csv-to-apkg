@@ -1,8 +1,6 @@
-import crypto from 'crypto';
 import path from 'path';
 import fs from 'fs';
-
-export const getRandomUUID = () => crypto.randomUUID();
+import getRandomUUID from './GetRandomUUID';
 
 class Workspace {
   location: string;

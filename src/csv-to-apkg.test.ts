@@ -1,8 +1,10 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { describe, expect, it } from 'vitest';
 
-import { createDeck, defaultDeckOptions, readCSVContent } from './csv-to-apkg';
 import convertCSVToAPKG from './convertCSVToAPKG';
+import readCSVContent from './csv-to-apkg';
+import createDeck from './data/createDeck';
+import defaultDeckOptions from './data/defaultDeckOptions';
 
 const CSV_EXAMPLE = `
 Word,Meaning,Tags
@@ -14,45 +16,30 @@ Word,Meaning,Tags
 describe('Convert CSV to APKG', () => {
   it('converts CSV to APKG format', async () => {
     const apkg = await convertCSVToAPKG(CSV_EXAMPLE);
-    expect(apkg.length)
-      .toEqual(53466);
+    expect(apkg.length).toEqual(53466);
   });
 
   it('reads the CSV content correctly', () => {
-    const {
-      headers,
-      rows,
-    } = readCSVContent(CSV_EXAMPLE);
+    const { headers, rows } = readCSVContent(CSV_EXAMPLE);
 
-    expect(headers)
-      .toEqual(['Word', 'Meaning', 'Tags']);
-    expect(rows)
-      .toEqual(
-        [
-          ['お願いします', 'Please', 'one'],
-          ['ありがとう', 'Thank you (impolite)', 'two'],
-          ['ありがとうございます。', 'Thank you (polite)', 'three'],
-        ],
-      );
+    expect(headers).toEqual(['Word', 'Meaning', 'Tags']);
+    expect(rows).toEqual([
+      ['お願いします', 'Please', 'one'],
+      ['ありがとう', 'Thank you (impolite)', 'two'],
+      ['ありがとうございます。', 'Thank you (polite)', 'three'],
+    ]);
   });
 
   it('Transform to decks / notes', () => {
     const data = readCSVContent(CSV_EXAMPLE);
     const deck = createDeck({
       ...defaultDeckOptions(),
-      data
+      data,
     });
 
-    expect(deck.name)
-      .toEqual('Default');
-    expect(
-      deck.cards[0].name,
-    )
-      .toEqual('お願いします');
-    expect(
-      deck.cards[0].back,
-    )
-      .toEqual('Please one');
+    expect(deck.name).toEqual('Default');
+    expect(deck.cards[0].name).toEqual('お願いします');
+    expect(deck.cards[0].back).toEqual('Please one');
   });
 
   it.skip('uses filename as deck name', () => {

@@ -7,14 +7,19 @@ import typescript from '@rollup/plugin-typescript';
 import { typescriptPaths } from 'rollup-plugin-typescript-paths';
 
 export default defineConfig({
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './src'),
+    },
+  },
   plugins: [],
   build: {
     manifest: true,
     minify: true,
     reportCompressedSize: true,
     lib: {
-      entry: path.resolve(__dirname, 'src/get-notion-object-title.ts'),
-      fileName: 'get-notion-object-title',
+      entry: path.resolve(__dirname, 'src/csv-to-apkg.ts'),
+      fileName: 'csv-to-apkg',
       formats: ['es', 'cjs'],
     },
     rollupOptions: {

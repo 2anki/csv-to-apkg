@@ -1,8 +1,10 @@
 import os from 'os';
 
-import { createDeck, defaultDeckOptions, readCSVContent } from './csv-to-apkg';
-import Workspace from './Workspace';
-import CustomExporter from './CustomExporter';
+import Workspace from './filesystem/Workspace';
+import CustomExporter from './filesystem/CustomExporter';
+import readCSVContent from './csv-to-apkg';
+import createDeck from './data/createDeck';
+import defaultDeckOptions from './data/defaultDeckOptions';
 
 export default function convertCSVToAPKG(csvContent: string): Promise<Buffer> {
   const data = readCSVContent(csvContent);
@@ -10,8 +12,7 @@ export default function convertCSVToAPKG(csvContent: string): Promise<Buffer> {
     ...defaultDeckOptions(),
     data,
   });
-  const isNew = true;
-  const type = 'fs';
+
   const workspace = new Workspace(os.tmpdir());
   const exporter = new CustomExporter('Default', workspace.location);
   exporter.configure([deck]);

@@ -2,7 +2,7 @@ import path from 'path';
 import fs, { PathLike } from 'fs';
 
 import CardGenerator from './CardGenerator';
-import Deck from './deck';
+import Deck from '../entities/deck';
 
 export default class CustomExporter {
   firstDeckName: string;

@@ -1,3 +1,5 @@
+import Note from './note';
+
 /**
  * https://github.com/2anki/server/blob/main/src/lib/parser/Deck.ts
  */
@@ -17,7 +19,7 @@ export default class Deck {
     cards: Note[],
     image: string | undefined,
     style: string | null,
-    id: number,
+    id: number
   ) {
     this.name = name;
     this.cards = cards;
