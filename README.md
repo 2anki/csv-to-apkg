@@ -8,10 +8,15 @@ A small library to convert CSV files to APKG files.
 
 ## Usage
 
+Below is an example showing you how to convert your csv (string).
+
 ```typescript
 import convertCSVToAPKG from 'get-notion-object-title';
 
-convertCSVToAPKG(csvContent); // returns binary format
+const csvContent = `Front,Back
+What is the capital of Germany?,Berlin`;
+
+convertCSVToAPKG(csvContent); // Promise<Buffer>
 ```
 
 ## How does it work?
