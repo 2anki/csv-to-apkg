@@ -1,7 +1,10 @@
+import crypto from 'crypto';
 import path from 'path';
 import fs from 'fs';
 
-import getRandomUUID from './getRandomUUID';
+function getRandomUUID() {
+  return crypto.randomUUID();
+}
 
 class Workspace {
   location: string;
