@@ -25,7 +25,7 @@ git clone https://github.com/2anki/create_deck ../create_deck
 Below is an example showing you how to convert your csv (string).
 
 ```typescript
-import convertCSVToAPKG from 'get-notion-object-title';
+import convertCSVToAPKG from '@2anki/csv-to-apkg';
 
 const csvContent = `Front,Back
 What is the capital of Germany?,Berlin`;
