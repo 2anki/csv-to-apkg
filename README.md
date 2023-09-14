@@ -2,6 +2,20 @@
 
 A small library to convert CSV files to APKG files.
 
+## Dependencies
+
+This project is part of [2anki.net](https://2anki.net/) and uses the following dependencies:
+
+- [2anki/create_deck](https://github.com/2anki/create_deck)
+- [2anki/server](https://github.com/2anki/2anki.net)
+
+Make sure these projects are available one level above this project:
+
+```
+git clone https://github.com/2anki/2anki.net ../server
+git clone https://github.com/2anki/create_deck ../create_deck
+```
+
 ## Install
 
 > npm i @2anki/csv-to-apkg
