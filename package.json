@@ -10,7 +10,8 @@
     "coverage": "vitest --coverage",
     "prebuild": "rm -rf dist",
     "lint": "eslint . --ext .ts",
-    "lint:fix": "eslint . --ext .ts --fix"
+    "lint:fix": "eslint . --ext .ts --fix",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -39,7 +40,8 @@
     "rollup-plugin-typescript-paths": "^1.4.0",
     "semantic-release": "^21.1.1",
     "tslib": "^2.6.0",
-    "vitest": "^0.34.3"
+    "vitest": "^0.34.3",
+    "husky": "^7.0.0"
   },
   "directories": {
     "lib": "dist"
