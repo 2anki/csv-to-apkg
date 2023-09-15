@@ -28,6 +28,7 @@
       }
     ]
   },
+  "ignorePatterns": ["dist/*", "off"],
   "settings": {
     "import/resolver": {
       "node": {
