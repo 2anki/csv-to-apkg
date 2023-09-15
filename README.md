@@ -22,46 +22,7 @@ git clone https://github.com/2anki/create_deck ../create_deck
 
 ## Usage
 
-Below is an example showing you how to convert your csv (string).
-
-```typescript
-import convertCSVToAPKG from '@2anki/csv-to-apkg';
-
-const csvContent = `Front,Back
-What is the capital of Germany?,Berlin`;
-
-convertCSVToAPKG(csvContent); // Promise<Buffer>
-
-import fs from 'fs';
-import os from 'os';
-
-import resolvePath from '../filesystem/resolvePath';
-import Workspace from '../filesystem/Workspace';
-import APKGExporter from '../filesystem/APKGExporter';
-import convertCSVToAPKG from '../convertCSVToAPKG';
-
-const workspace = new Workspace(os.tmpdir());
-const exporter = new APKGExporter('Default', workspace.location);
-
-const csvFile = fs
-    .readFileSync(
-        resolvePath(
-            __dirname,
-            '../mocks/Japanese Words 71594f63607d440fa080879385ec0acc.csv'
-        ),
-        'utf-8'
-    )
-    .toString();
-
-/* eslint-disable no-console */
-console.log('workspace.location', workspace.location);
-convertCSVToAPKG(csvFile, exporter)
-    .then(() => {
-        console.log('Files available at: ', workspace.location);
-        console.info('Done!');
-    })
-    .catch(console.error);
-```
+This project was developed using [TDD](https://www.goodreads.com/book/show/387190.Test_Driven_Development), so checkout the [tests](./src/csv-to-apkg.test.ts) for examples on expected usage.
 
 ## How does it work?
 
