@@ -26,7 +26,7 @@ const mapRowToCard = (row: string[]): Note => {
   };
 };
 
-function locateCards(data: CSVData): Note[] {
+export function locateCards(data: CSVData): Note[] {
   return data.rows.map((row) => mapRowToCard(row));
 }
 

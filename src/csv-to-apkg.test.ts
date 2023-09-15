@@ -2,13 +2,14 @@
 import { test, expect } from 'vitest';
 
 import convertCSVToAPKG from './convertCSVToAPKG';
-import readCSVContent from './csv-to-apkg';
+import readCSVContent, { getCardsFromCSV } from './csv-to-apkg';
 import createDeck from './data/createDeck';
 import defaultDeckOptions from './data/defaultDeckOptions';
 import readCSVFile from './filesystem/readCSVFile';
 import resolvePath from './filesystem/resolvePath';
 import Exporter from './domain/exporter';
 import Deck from './entities/deck';
+import skipFirstLine from './data/skipFirstLine';
 
 const CSV_EXAMPLE = `
 Word,Meaning,Tags
@@ -66,4 +67,11 @@ test('uses custom filename as deck name', () => {
     name,
   });
   expect(deck.name).toEqual('Japanese Words');
+});
+
+const CARD_TEST_CASES = EXPECTED_ROWS.map((row, index) => [index, row[0], skipFirstLine(row).join(' ')]);
+test.each(CARD_TEST_CASES)('card at index %i has the correct values', (index, expectedName, expectedBack) => {
+  const cards = getCardsFromCSV(CSV_EXAMPLE);
+  expect(cards[index].name).toEqual(expectedName);
+  expect(cards[index].back).toEqual(expectedBack);
 });
