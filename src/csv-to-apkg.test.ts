@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { test, describe, expect, it } from 'vitest';
+import { test, expect } from 'vitest';
 
 import convertCSVToAPKG from './convertCSVToAPKG';
 import readCSVContent from './csv-to-apkg';
@@ -25,6 +25,7 @@ const MOCK_BUF_LENGTH = 53466;
 
 test('converts CSV to APKG format', async () => {
   const exporter: Exporter = {
+    // eslint-disable-next-line no-unused-vars
     configure(payload: Deck[]): void {},
     save(): Promise<Buffer> {
       return Promise.resolve(Buffer.alloc(MOCK_BUF_LENGTH));

@@ -31,26 +31,26 @@ class CardGenerator implements Generator {
     this.currentDirectory = workspace;
   }
 
-  run(): Promise<string> {
+  getScriptArgs(): string[] {
     const deckInfo = path.join(this.currentDirectory, 'deck_info.json');
-    const templateDirectory = resolvePath(
+    const templateDir = resolvePath(
       __dirname,
       '../../../server/src/templates/'
     );
+    return [CREATE_DECK_SCRIPT_PATH, deckInfo, templateDir];
+  }
 
-    const createDeckScriptPathARGS = [
-      CREATE_DECK_SCRIPT_PATH,
-      deckInfo,
-      templateDirectory,
-    ];
-    console.log('execFile', PYTHON(), createDeckScriptPathARGS);
+  run(): Promise<string> {
+    const args = this.getScriptArgs();
+
     return new Promise((resolve, reject) => {
       execFile(
         PYTHON(),
-        createDeckScriptPathARGS,
+        args,
         { cwd: this.currentDirectory },
         (err, stdout) => {
           if (err) {
+            // eslint-disable-next-line no-console
             console.error(err);
             reject(err);
           } else {

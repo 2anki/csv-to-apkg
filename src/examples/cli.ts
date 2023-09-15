@@ -19,7 +19,11 @@ const csvFile = fs
   )
   .toString();
 
-convertCSVToAPKG(csvFile, exporter).then(() => {
-  console.log('Files available at: ', workspace.location);
-  console.info('Done!');
-});
+/* eslint-disable no-console */
+console.log('workspace.location', workspace.location);
+convertCSVToAPKG(csvFile, exporter)
+  .then(() => {
+    console.log('Files available at: ', workspace.location);
+    console.info('Done!');
+  })
+  .catch(console.error);
