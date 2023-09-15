@@ -18,6 +18,11 @@ export default function readCSVContent(content: string): CSVData {
   };
 }
 
+/**
+ * Retrieves cards from csv file
+ * @param csvContent string of csv file
+ * @returns
+ */
 export function getCardsFromCSV(csvContent: string): Note[] {
   const data = readCSVContent(csvContent);
   return locateCards(data);
