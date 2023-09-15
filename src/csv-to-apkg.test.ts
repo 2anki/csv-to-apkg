@@ -7,6 +7,8 @@ import createDeck from './data/createDeck';
 import defaultDeckOptions from './data/defaultDeckOptions';
 import readCSVFile from './filesystem/readCSVFile';
 import resolvePath from './filesystem/resolvePath';
+import Exporter from './domain/exporter';
+import Deck from './entities/deck';
 
 const CSV_EXAMPLE = `
 Word,Meaning,Tags
@@ -19,10 +21,17 @@ const EXPECTED_ROWS = [
   ['ありがとう', 'Thank you (impolite)', 'two'],
   ['ありがとうございます。', 'Thank you (polite)', 'three'],
 ];
+const MOCK_BUF_LENGTH = 53466;
 
 test('converts CSV to APKG format', async () => {
-  const apkg = await convertCSVToAPKG(CSV_EXAMPLE);
-  expect(apkg.length).toEqual(53466);
+  const exporter: Exporter = {
+    configure(payload: Deck[]): void {},
+    save(): Promise<Buffer> {
+      return Promise.resolve(Buffer.alloc(MOCK_BUF_LENGTH));
+    },
+  };
+  const apkg = await convertCSVToAPKG(CSV_EXAMPLE, exporter);
+  expect(apkg.length).toEqual(MOCK_BUF_LENGTH);
 });
 
 test('reads the CSV content correctly', () => {

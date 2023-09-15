@@ -3,8 +3,9 @@ import fs, { PathLike } from 'fs';
 
 import CardGenerator from './CardGenerator';
 import Deck from '../entities/deck';
+import Exporter from '../domain/exporter';
 
-export default class CustomExporter {
+export default class APKGExporter implements Exporter {
   firstDeckName: string;
 
   workspace: string;

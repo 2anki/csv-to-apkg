@@ -20,14 +20,18 @@ function PYTHON() {
   return '/usr/bin/python3';
 }
 
-class CardGenerator {
+interface Generator {
+  run(): Promise<string>;
+}
+
+class CardGenerator implements Generator {
   currentDirectory: string;
 
   constructor(workspace: string) {
     this.currentDirectory = workspace;
   }
 
-  run() {
+  run(): Promise<string> {
     const deckInfo = path.join(this.currentDirectory, 'deck_info.json');
     const templateDirectory = resolvePath(
       __dirname,
