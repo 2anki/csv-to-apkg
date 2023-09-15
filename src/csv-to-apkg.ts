@@ -1,6 +1,5 @@
-import createDeck from './data/createDeck';
+import createDeck, { CreateDeckOptions } from './data/createDeck';
 import { CSVData } from './data/csvTypes';
-import defaultDeckOptions from './data/defaultDeckOptions';
 import getFields from './data/getFields';
 import getFirstLine from './data/getFirstLine';
 import getTrimmedLines from './data/getTrimmedLines';
@@ -18,10 +17,10 @@ export default function readCSVContent(content: string): CSVData {
   };
 }
 
-export function getCardsFromCSV(csvContent: string) {
+export function getCardsFromCSV(csvContent: string, options: CreateDeckOptions) {
   const data = readCSVContent(csvContent);
   const deck = createDeck({
-    ...defaultDeckOptions(),
+    ...options,
     data,
   });
   return deck.cards;

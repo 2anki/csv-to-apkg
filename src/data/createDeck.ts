@@ -5,7 +5,7 @@ import getFields from './getFields';
 import getFirstLine from './getFirstLine';
 import skipFirstLine from './skipFirstLine';
 
-interface CreateDeckOptions extends Deck {
+export interface CreateDeckOptions extends Deck {
   data: CSVData;
 }
 
