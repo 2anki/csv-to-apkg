@@ -40,7 +40,7 @@
     "rollup-plugin-typescript-paths": "^1.4.0",
     "semantic-release": "^22.0.0",
     "tslib": "^2.6.0",
-    "vitest": "^0.34.3",
+    "vitest": "^1.1.1",
     "husky": "^8.0.3"
   },
   "directories": {
