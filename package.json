@@ -30,6 +30,7 @@
   },
   "homepage": "https://github.com/2anki/csv-to-apkg#readme",
   "devDependencies": {
+    "typescript": "^5.0.0",
     "@rollup/plugin-typescript": "^12.1.1",
     "@types/node": "^22.0.2",
     "@typescript-eslint/eslint-plugin": "^8.0.0",
