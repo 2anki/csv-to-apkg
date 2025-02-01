@@ -43,7 +43,7 @@
     "rollup-plugin-typescript-paths": "^1.4.0",
     "semantic-release": "^24.0.0",
     "tslib": "^2.6.0",
-    "vitest": "^2.0.5"
+    "vitest": "^3.0.4"
   },
   "directories": {
     "lib": "dist"
