@@ -4,7 +4,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-Small TypeScript library that converts CSV content into Anki decks (`.apkg`). Part of 2anki.net, published to npm as `@2anki/csv-to-apkg` (semantic-release from `main`, conventional commits). The first CSV column becomes the card front; the remaining columns become the back. Cloze deletions are not supported.
+Small TypeScript library that converts CSV content into Anki decks (`.apkg`), published to npm as `@2anki/csv-to-apkg` (semantic-release from `main`, conventional commits). The first CSV column becomes the card front; the remaining columns become the back. Cloze deletions are not supported.
+
+**Legacy status:** the 2anki server no longer consumes this package — it parses CSV in-repo and vendors its own `create_deck` copy. This library remains a standalone npm package; changes here don't affect 2anki.net.
 
 ## Commands
 
